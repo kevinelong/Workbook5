@@ -40,27 +40,49 @@ let courses = [
     }
 ];
 
-    // USE: find() and filter() to answer these questions:
+// USE: find() and filter() to answer these questions:
 
-    // When does the PROG200 course start?
-    function isCourseIdPROG200(course){
-        if(course.CourseId == "PROG200"){
-            return true;
-        }else{
-            return false;
-        }
-        // return course.CourseId == "PROG200";
+// Q1 - When does the PROG200 course start?
+function isCourseIdPROG200(course) {
+    if (course.CourseId == "PROG200") {
+        return true;
+    } else {
+        return false;
     }
-    let q1match = courses.find(isCourseIdPROG200);
-    console.log(q1match);
-    console.log( q1match.StartDate );
-    //ALL IN ONE LINE?!?!?!
-    console.log( courses.find( c => c.CourseId == "PROG200").StartDate );
+    // return course.CourseId == "PROG200";
+}
+let q1match = courses.find(isCourseIdPROG200); //identify the one matching object and return that object
+console.log(q1match);
+console.log(q1match.StartDate);
+//ALL IN ONE LINE?!?!?!
+// console.log(courses.find(c => c.CourseId == "PROG200").StartDate);
 
 
-    // What is the title of the PROJ500 course?
-    console.log( courses.find( c => c.CourseId == "PROJ500").Title );
+// Q2 - What is the title of the PROJ500 course?
+// console.log(courses.find(c => c.CourseId == "PROJ500").Title);
 
-    // What are the titles of the courses that cost $50 or less?
-    
-    // What classes meet in "Classroom 1"?
+// Q3 - What are the titles of the courses that cost $50 or less?
+
+function lessThanFifty(c) {
+    if(Number(c.Fee) <= 50){
+        return true;
+    }else{
+        return false;
+    };
+}
+
+let matchesLessThanFifty = courses.filter(lessThanFifty); //identify all matching objects and the list of matches
+
+for (i = 0; i < matchesLessThanFifty.length; i++) {
+    console.log(matchesLessThanFifty[i].Title);
+}
+
+//ALL IN ONE OR TWO LINES?!?!?!?!
+// let filteredList = courses.filter(c => c.Fee < 50);
+// filteredList.forEach(c => console.log(c.Title));
+courses.filter(c => Number(c.Fee) <= 50).forEach(c => console.log(c.Title));
+
+
+// Q4 - What classes meet in "Classroom 1"?
+console.log("Q4 Answer:")
+courses.filter(c => c.Location == "Classroom 1").forEach(c => console.log(c.Title));
