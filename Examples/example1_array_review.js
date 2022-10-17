@@ -1,12 +1,10 @@
 
 //EXAMPLE 1 Section 1-3 Page 7"
-console.log("EXAMPLE 1 Section 1-3 Page 7");
-{
-    let kids = ["Natalie", "Brittany", "Zachary"];
-}
+
+let kids1 = ["Natalie", "Brittany", "Zachary"];
+
 
 //EXAMPLE 1 Section 1-3 Page 7"
-console.log("EXAMPLE 1 Section 1-3 Page 7");
 
 let kids = ["Natalie", "Brittany", "Zachary"];
 

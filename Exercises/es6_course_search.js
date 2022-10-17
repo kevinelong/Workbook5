@@ -40,8 +40,12 @@ let courses = [
     }
 ];
 
-    // USE: find() and filter() to answer these questions
+    // USE: find() and filter() to answer these questions:
+
     // When does the PROG200 course start?
+
     // What is the title of the PROJ500 course?
+    
     // What are the titles of the courses that cost $50 or less?
+    
     // What classes meet in "Classroom 1"?
