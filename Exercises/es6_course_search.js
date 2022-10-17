@@ -43,9 +43,24 @@ let courses = [
     // USE: find() and filter() to answer these questions:
 
     // When does the PROG200 course start?
+    function isCourseIdPROG200(course){
+        if(course.CourseId == "PROG200"){
+            return true;
+        }else{
+            return false;
+        }
+        // return course.CourseId == "PROG200";
+    }
+    let q1match = courses.find(isCourseIdPROG200);
+    console.log(q1match);
+    console.log( q1match.StartDate );
+    //ALL IN ONE LINE?!?!?!
+    console.log( courses.find( c => c.CourseId == "PROG200").StartDate );
+
 
     // What is the title of the PROJ500 course?
-    
+    console.log( courses.find( c => c.CourseId == "PROJ500").Title );
+
     // What are the titles of the courses that cost $50 or less?
     
     // What classes meet in "Classroom 1"?
