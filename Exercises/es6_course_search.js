@@ -63,7 +63,7 @@ console.log(q1match.StartDate);
 
 // Q3 - What are the titles of the courses that cost $50 or less?
 
-function lessThanFifty(c) {
+function isFiftyOrLess(c) {
     if(Number(c.Fee) <= 50){
         return true;
     }else{
@@ -71,10 +71,10 @@ function lessThanFifty(c) {
     };
 }
 
-let matchesLessThanFifty = courses.filter(lessThanFifty); //identify all matching objects and the list of matches
+let fiftyOrLessList = courses.filter(isFiftyOrLess); //identify all matching objects and the list of matches
 
-for (i = 0; i < matchesLessThanFifty.length; i++) {
-    console.log(matchesLessThanFifty[i].Title);
+for (i = 0; i < fiftyOrLessList.length; i++) {
+    console.log(fiftyOrLessList[i].Title);
 }
 
 //ALL IN ONE OR TWO LINES?!?!?!?!
