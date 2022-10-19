@@ -9,3 +9,6 @@ let lockerAndAccessCode = [
 console.log(lockerAndAccessCode[2][1]);
 console.log(lockerAndAccessCode[1]);
 
+//index out of range as there is no third value on the inner lists, 
+//  yields undefined
+console.log(lockerAndAccessCode[2][2]);
