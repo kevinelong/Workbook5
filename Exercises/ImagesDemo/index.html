@@ -20,10 +20,19 @@
     window.onload = () => {
         const images = document.getElementsByTagName("img");
         const paragraphs = document.getElementsByTagName("p");
+        
         for (i = 0; i < 3; i++) {
-            images[i].src = data[i].imagePath;
-            images[i].setAttribute("alt", data[i].description);
-            paragraphs[i].innerHTML = data[i].description;
+        
+            image = images[i];
+            item = data[i];
+            p = paragraphs[i];
+            text =  item.description
+
+            image.src = item.imagePath;
+            image.setAttribute("alt", text);
+            p.innerHTML = text;
+            p.style.border = "1px solid black";
+        
         }
         //if we don't convert we need a traditional for() loop with an index
         // const list = [...paragraphs]; //CONVERT TO ARRAY USING ...
