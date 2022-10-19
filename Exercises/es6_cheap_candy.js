@@ -1,4 +1,4 @@
-//es6_cheap_candy.js Section 1-27
+//es6_cheap_candy.js Section 1-27 Page 31
 
 //DATA
 let products = [
@@ -10,38 +10,13 @@ let products = [
 
 //Exercise 1
 // a. which candies cost less than $4.00?
-// b. which candies as "M&M" as part of the name?
-// c. Do we have a product called Swedish Fish?
+products.filter(p => p.price < 4).forEach(p => console.log("<4: ", p));
 
+// b. which candies have "M&M" as part of the name?
+let mm = products.filter(p => p.product.includes("M&M"));
+mm.forEach(p => console.log("M&Ms: ", p));
 
-//Exercise 2
-let academyMembers = [
-    {
-        memID: 101,
-        name: "Bob Brown",
-        films: ["Bob I", "Bob II", "Bob III", "Bob IV"]
-    },
-    {
-        memID: 142,
-        name: "Sallie Smith",
-        films: ["A Good Day", "A Better Day"]
-    },
-    {
-        memID: 187,
-        name: "Fred Flanders",
-        films: ["Who is Fred?", "Where is Fred?", "What is Fred?", "Why Fred?"]
-    },
-    {
-        memID: 203,
-        name: "Bobbie Boots",
-        films: ["Walking Boots", "Hiking Boots", "Cowboy Boots"]
-    },
-];
-
-// Who is the Academy Member whose ID is 187?
-// Who has have been in at least 3 films?
-// Who has a name that starts with "Bob"?
-// HARDER: Which Academy Members have been in a film
-// that starts with "A"
-
+// c. Do we have a product called Swedish Fish? 
+//     (use find (faster) or filter (more normal) ) true==yes
+console.log(products.find(p => p.product == "Swedish Fish") != undefined)
 
