@@ -1,0 +1,47 @@
+<head>
+    <link rel="stylesheet" href="main.css">
+</head>
+<script>
+    const data = [
+        {
+            imagePath: "toy.jpg",
+            description: "A simple toy"
+        },
+        {
+            imagePath: "machine.jpg",
+            description: "The Machine"
+        },
+        {
+            imagePath: "toy.jpg",
+            description: "Another instance"
+        },
+    ];
+
+    window.onload = () => {
+        const images = document.getElementsByTagName("img");
+        const paragraphs = document.getElementsByTagName("p");
+        for (i = 0; i < 3; i++) {
+            images[i].src = data[i].imagePath;
+            images[i].setAttribute("alt", data[i].description);
+            paragraphs[i].innerHTML = data[i].description;
+        }
+        //if we don't convert we need a traditional for() loop with an index
+        // const list = [...paragraphs]; //CONVERT TO ARRAY USING ...
+        // list.forEach(e => e.style.border = "1px solid black")
+    };
+</script>
+
+<body>
+    <div>
+        <img>
+        <p></p>
+    </div>
+    <div>
+        <img>
+        <p></p>
+    </div>
+    <div>
+        <img>
+        <p></p>
+    </div>
+</body>
