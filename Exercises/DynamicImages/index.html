@@ -20,7 +20,7 @@
         }
     ];
 
-    
+
     document.addEventListener("DOMContentLoaded", () => {
 
         const imageList = document.getElementById("imageList");
@@ -40,6 +40,7 @@
             const item = imageList.selectedOptions[0];//first and only
             const img = document.createElement("img");
             img.src = item.value;
+            img.alt = item.dataset.description;
             img.style.objectFit = "contain";
             img.style.width = "300px";
             display.appendChild(img);
