@@ -7,11 +7,13 @@
         b.style.color = "white";
         b.innerHTML = "COLOR";
         b.addEventListener("click", ()=>{
-            if(b.style.backgroundColor == "blue"){
-                b.style.backgroundColor = "red";
-            }else{
-                b.style.backgroundColor = "blue";
-            }
+            // if(b.style.backgroundColor == "blue"){
+            //     b.style.backgroundColor = "red";
+            // }else{
+            //     b.style.backgroundColor = "blue";
+            // }
+            const isBlue = b.style.backgroundColor == "blue";
+            b.style.backgroundColor = isBlue ? "red" : "blue"; //ternary operator
         });
         return b;
     }

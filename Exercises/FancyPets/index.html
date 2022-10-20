@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <style>
+        body {
+            display: flex;
+            background-color: darkslategray;
+        }
+
+        td,
+        th,
+        table {
+            border: 1px solid black;
+        }
+
+        .card {
+            background-color: white;
+            box-shadow: 3px 3px 6px 6px rgba(0, 0, 0, 0.2);
+            padding: 1em;
+            margin: 1em;
+            border-radius: 1em;
+            display: inline-block;
+            width: fit-content;
+        }
+    </style>
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+
+</head>
+
+<body></body>
+<script>
+    let pets = [
+        {
+            name: "Jag",
+            type: "Fish",
+            breed: "Jaguar Cichlid",
+            bestTrick: "Bullys the other fish.",
+            image: "images/jaguar-cichlid.jpg"
+        },
+        {
+            name: "Simba",
+            type: "Lion",
+            breed: "Kenyan",
+            bestTrick: "Singing",
+            image: "images/simba.jpg"
+        },
+        {
+            name: "Liberty",
+            type: "Dog",
+            breed: "Wrestling and Chasing",
+            bestTrick: "",
+            image: "images/siberian.jpg"
+        },
+    ];
+    
+    function createImage(src, alt) {
+        const img = document.createElement("img");
+
+        img.src = src;
+        img.alt = alt;
+        img.style.width = "100%";
+        img.style.objectFit = "contain";
+        img.classList.add("card-img-top");
+
+        return img;
+    }
+
+    function createTable(object) {
+        const table = document.createElement("table");
+
+        table.setAttribute("border", 1); //ignored with bootstrap
+
+        for (key in object) {
+            const value = object[key];
+            table.innerHTML += `<tr><th>${key}</th><td>${value}</td></tr>`;
+        }
+        table.classList.add("card-body");
+
+        return table;
+    }
+
+    function card(object) {
+        const card = document.createElement("div");
+
+        card.classList.add("card");
+        card.appendChild(createImage(object.image, object.name));
+        card.appendChild(createTable(object));
+        card.style.width = "300px";
+
+        return card;
+    }
+
+    pets.forEach(p => document.body.appendChild(card(p)));
+    
+    //TEST
+    // document.body.appendChild(
+    //     createImage("images/siberian.jpg", "Chaser")
+    // );
+    // document.body.appendChild(
+    //     createTable(pets[0])
+    // );
+    // document.body.appendChild(
+    //     card(pets[0])
+    // );
+
+</script>
+<!-- JavaScript Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
+    crossorigin="anonymous"></script>
+
+</html>
