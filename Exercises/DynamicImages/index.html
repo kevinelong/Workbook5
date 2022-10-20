@@ -20,11 +20,14 @@
         }
     ];
 
+    
     document.addEventListener("DOMContentLoaded", () => {
+
         const imageList = document.getElementById("imageList");
         const add = document.getElementById("add");
         const clear = document.getElementById("clear");
         const display = document.getElementById("display");
+
         imageFiles.forEach(image => {
             const option = document.createElement("option");
             option.innerHTML = image.title;
@@ -32,6 +35,7 @@
             option.setAttribute("data-description", image.description);
             imageList.appendChild(option);
         });
+        
         add.addEventListener("click", (e) => {
             const item = imageList.selectedOptions[0];//first and only
             const img = document.createElement("img");
@@ -40,6 +44,7 @@
             img.style.width = "300px";
             display.appendChild(img);
         });
+        
         clear.addEventListener("click", (e) => {
             display.innerHTML = "";
         });
