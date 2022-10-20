@@ -1,0 +1,22 @@
+<body></body>
+
+<script>
+    function makeButton(){
+        const b = document.createElement("button");
+        b.style.backgroundColor = "blue";
+        b.style.color = "white";
+        b.innerHTML = "COLOR";
+        b.addEventListener("click", ()=>{
+            if(b.style.backgroundColor == "blue"){
+                b.style.backgroundColor = "red";
+            }else{
+                b.style.backgroundColor = "blue";
+            }
+        });
+        return b;
+    }
+    
+    document.body.appendChild(makeButton());
+    document.body.appendChild(makeButton());
+    
+</script>
