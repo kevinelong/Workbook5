@@ -15,6 +15,9 @@
                 {
                     projectId: 112,
                     name: "Cupidatat aute"
+                }, {
+                    projectId: 112,
+                    name: "Deaux Cupidatat aute"
                 }
             ]
         },
@@ -52,6 +55,7 @@
 
     function makeTable(employee) {
         const table = document.createElement("table");
+        table.border = 1;
         for (key in employee) {
             let value = employee[key];
             if (key == "projectsAssignedTo") {
@@ -65,7 +69,7 @@
     function onSelect(e) {
         const item = e.target.selectedOptions[0];
         results.innerHTML = "";
-        const employee = employees.find(e => e.name = item.value);
+        const employee = employees.find(e => e.name == item.value);
         results.appendChild(makeTable(employee));
     }
 
