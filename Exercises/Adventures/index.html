@@ -1,19 +1,23 @@
 <style>
-    table{
+    table {
         margin: 1em;
     }
-    td{
+
+    td {
         border: 1px solid black;
         border-collapse: collapse;
         border-style: inset;
     }
-    tr:first-child{
+
+    tr:first-child {
         font-weight: bold;
     }
 </style>
+
 <body></body>
 <script>
     let categories = [
+        "Select Activity Category:",
         "Adventures",
         "Arts & Crafts",
         "Local Sports",
@@ -79,19 +83,25 @@
     //     cell3.innerHTML = theTicket.expires;
     // }
     //Crete table then using insert methods for row and cell
-    function makeTable(activity) {
+    function makeTable(activities) {
         const table = document.createElement("table");
         const headings = table.insertRow(-1);
-        const values = table.insertRow(-1);
-        let i = 0;
-        for(key in activity){
-            const value = activity[key]
-            const h = headings.insertCell(i);
-            const v = values.insertCell(i);
-            h.innerHTML = key.toUpperCase();
-            v.innerHTML = value;
-            i++;
-        }
+        let r = 0;
+        activities.forEach(activity => { //chaining functions
+            const values = table.insertRow(-1);
+            let i = 0;
+            for (key in activity) {
+                const value = activity[key]
+                if(r==0){
+                    const h = headings.insertCell(i);
+                    h.innerHTML = key.toUpperCase();
+                }
+                const v = values.insertCell(i);
+                v.innerHTML = value;
+                i++;
+            }
+            r++;
+        });
         return table;
     }
 
@@ -99,9 +109,8 @@
         results.innerHTML = ""; //clear old results
         //alert(e.target.selectedOptions[0].value)
         const value = e.target.selectedOptions[0].value;
-        activities.filter(a => a.category == value).forEach(a => { //chaining functions
-            results.appendChild(makeTable(a))
-        });
+        const filtered = activities.filter(a => a.category == value);
+        results.appendChild(makeTable(filtered));
     }
 
     document.body.appendChild(makeDropdownList(categories, onChangeCallback));
