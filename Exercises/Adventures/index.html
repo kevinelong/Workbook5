@@ -1,0 +1,112 @@
+<style>
+    table{
+        margin: 1em;
+    }
+    td{
+        border: 1px solid black;
+        border-collapse: collapse;
+        border-style: inset;
+    }
+    tr:first-child{
+        font-weight: bold;
+    }
+</style>
+<body></body>
+<script>
+    let categories = [
+        "Adventures",
+        "Arts & Crafts",
+        "Local Sports",
+        "Museums",
+        "Wine Tastings",
+        "Other"
+    ];
+    let activities = [
+        {
+            category: "Adventures",
+            id: "A101",
+            name: "Valley Hot Air Balloons",
+            description: "Enjoy a lovely hot air balloon ride over the valley at sunrise. Call 800-555-1212 to reserve a date/time after you complete your e-ticket purchase.",
+            location: "121 S. Main Street",
+            price: 265.00
+        },
+        {
+            category: "Adventures",
+            id: "A101",
+            name: "Mountain Balloons",
+            description: "Enjoy a lovely hot air balloon ride over the valley at sunrise. Call 800-555-1212 to reserve a date/time after you complete your e-ticket purchase.",
+            location: "121 S. Main Street",
+            price: 265.00
+        }, {
+            category: "Wine Tastings",
+            id: "A101",
+            name: "Valley Wine Tastings",
+            description: "Enjoy a lovely hot air balloon ride over the valley at sunrise. Call 800-555-1212 to reserve a date/time after you complete your e-ticket purchase.",
+            location: "121 S. Main Street",
+            price: 265.00
+        },
+        {
+            category: "Wine Tastings",
+            id: "A101",
+            name: "Sunrise Wine Tastings",
+            description: "Enjoy a lovely hot air balloon ride over the valley at sunrise. Call 800-555-1212 to reserve a date/time after you complete your e-ticket purchase.",
+            location: "121 S. Main Street",
+            price: 265.00
+        },
+    ];
+
+    function makeDropdownList(stringList, onChangeCallback) {
+        const select = document.createElement("select");
+        stringList.forEach(text => {
+            const option = document.createElement("option");
+            option.innerHTML = text;
+            option.value = text;
+            select.appendChild(option);
+        });
+        select.addEventListener("change", onChangeCallback)
+        return select;
+    }
+    // function buildTicketRow(table, theTicket) {
+    //     // Create an empty <tr> element and add it to the last
+    //     // position of the table
+    //     let row = table.insertRow(-1);
+    //     // Create new cells (<td> elements) and add text
+    //     let cell1 = row.insertCell(0);
+    //     cell1.innerHTML = theTicket.tixNum;
+    //     let cell2 = row.insertCell(1);
+    //     cell2.innerHTML = "$" + theTicket.prize.toFixed(2);
+    //     let cell3 = row.insertCell(2);
+    //     cell3.innerHTML = theTicket.expires;
+    // }
+    //Crete table then using insert methods for row and cell
+    function makeTable(activity) {
+        const table = document.createElement("table");
+        const headings = table.insertRow(-1);
+        const values = table.insertRow(-1);
+        let i = 0;
+        for(key in activity){
+            const value = activity[key]
+            const h = headings.insertCell(i);
+            const v = values.insertCell(i);
+            h.innerHTML = key.toUpperCase();
+            v.innerHTML = value;
+            i++;
+        }
+        return table;
+    }
+
+    function onChangeCallback(e) {
+        results.innerHTML = ""; //clear old results
+        //alert(e.target.selectedOptions[0].value)
+        const value = e.target.selectedOptions[0].value;
+        activities.filter(a => a.category == value).forEach(a => { //chaining functions
+            results.appendChild(makeTable(a))
+        });
+    }
+
+    document.body.appendChild(makeDropdownList(categories, onChangeCallback));
+
+    const results = document.createElement("div");
+    results.setAttribute("id", "results");
+    document.body.appendChild(results);
+</script>
