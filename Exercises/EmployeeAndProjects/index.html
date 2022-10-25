@@ -1,0 +1,79 @@
+<!-- Exercise 3 Section 3-20 Page 94 -->
+
+<body></body>
+<script>
+    let employees = [
+        {
+            id: "55007",
+            name: "Karina Chambers",
+            jobTitle: "Tech Lead",
+            yearsAtCompany: 14,
+            email: "karinachambers@ziore.com",
+            wfhAdress: "640 Boynton Place, Faxon, Kentucky, 42071",
+            skillSet: "Velit commodo voluptate id est. Fugiat magna enim quis exercitation duis fugiat non nisi consequat.",
+            projectsAssignedTo: [
+                {
+                    projectId: 112,
+                    name: "Cupidatat aute"
+                }
+            ]
+        },
+        {
+            id: "23810",
+            name: "Kasey Bowers",
+            jobTitle: "Senior Programmer",
+            yearsAtCompany: 19,
+            email: "kaseybowers@ziore.com",
+            wfhAdress: "969 Clarendon Road, Marshall, Vermont, 47859",
+            skillSet: "Est et voluptate incididunt deserunt culpa excepteur.",
+            projectsAssignedTo: [
+                {
+                    projectId: 124,
+                    name: "Amet do deserunttate aliqua"
+                }
+            ]
+        },
+    ];
+
+    function makeOption(text) {
+        const option = document.createElement("option");
+        option.innerHTML = text;
+        option.value = text;
+        return option;
+    }
+
+    function makeDropdown(list, callBackFunction) {
+        const select = document.createElement("select");
+        select.appendChild(makeOption("Select an Option:"));
+        list.forEach(text => select.appendChild(makeOption(text)));
+        select.addEventListener("change", callBackFunction);
+        return select;
+    }
+
+    function makeTable(employee) {
+        const table = document.createElement("table");
+        for (key in employee) {
+            let value = employee[key];
+            if (key == "projectsAssignedTo") {
+                value = value.length;
+            }
+            table.innerHTML += `<tr><th>${key}</th><td>${value}</td></tr>`
+        }
+        return table;
+    }
+
+    function onSelect(e) {
+        const item = e.target.selectedOptions[0];
+        results.innerHTML = "";
+        const employee = employees.find(e => e.name = item.value);
+        results.appendChild(makeTable(employee));
+    }
+
+    const names = employees.map(emp => emp.name);
+    const select = makeDropdown(names, onSelect);
+    document.body.appendChild(select);
+
+    const results = document.createElement("div");
+    results.id = "results";
+    document.body.appendChild(results);
+</script>
